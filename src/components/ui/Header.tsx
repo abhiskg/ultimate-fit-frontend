@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 const Header = () => {
   const [menu, setMenu] = useState(false);
+  const authContext = useContext(AuthContext);
 
   return (
     <header className=" bg-primary sticky top-0 z-10 h-16 bg-violet-400 dark:bg-gray-900 dark:text-gray-100">
@@ -27,7 +29,14 @@ const Header = () => {
         </Link>
         <ul className="relative hidden items-center gap-5 font-semibold sm:flex">
           <li className="hover:text-violet-600">
-            <Link to="/products">Products</Link>
+            <NavLink
+              to="/home"
+              className={({ isActive }) =>
+                isActive ? " text-violet-600 dark:text-violet-400" : ""
+              }
+            >
+              Home
+            </NavLink>
           </li>
           <li className="hover:text-violet-600">
             <NavLink
@@ -41,26 +50,6 @@ const Header = () => {
           </li>
           <li className="hover:text-violet-600">
             <NavLink
-              to="/add-service"
-              className={({ isActive }) =>
-                isActive ? " text-violet-600 dark:text-violet-400" : ""
-              }
-            >
-              Add Service
-            </NavLink>
-          </li>
-          <li className="hover:text-violet-600">
-            <NavLink
-              to="/my-reviews"
-              className={({ isActive }) =>
-                isActive ? " text-violet-600 dark:text-violet-400" : ""
-              }
-            >
-              My Reviews
-            </NavLink>
-          </li>
-          <li className="hover:text-violet-600">
-            <NavLink
               to="/blog"
               className={({ isActive }) =>
                 isActive ? " text-violet-600 dark:text-violet-400" : ""
@@ -69,6 +58,43 @@ const Header = () => {
               Blog
             </NavLink>
           </li>
+          {authContext?.user ? (
+            <>
+              <li className="hover:text-violet-600">
+                <NavLink
+                  to="/add-service"
+                  className={({ isActive }) =>
+                    isActive ? " text-violet-600 dark:text-violet-400" : ""
+                  }
+                >
+                  Add Service
+                </NavLink>
+              </li>
+              <li className="hover:text-violet-600">
+                <NavLink
+                  to="/my-reviews"
+                  className={({ isActive }) =>
+                    isActive ? " text-violet-600 dark:text-violet-400" : ""
+                  }
+                >
+                  My Reviews
+                </NavLink>
+              </li>
+            </>
+          ) : (
+            <>
+              <li className="hover:text-violet-600">
+                <NavLink
+                  to="/login"
+                  className={({ isActive }) =>
+                    isActive ? " text-violet-600 dark:text-violet-400" : ""
+                  }
+                >
+                  Login
+                </NavLink>
+              </li>
+            </>
+          )}
         </ul>
 
         {/* Hamburger Menu */}

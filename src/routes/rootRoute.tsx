@@ -1,5 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Root from "../layout/Root";
+import Login from "../pages/authentication/Login";
+import Register from "../pages/authentication/Register";
 import Blog from "../pages/blog/Blog";
 import Main from "../pages/home/Main";
 import MyReviews from "../pages/review/MyReviews";
@@ -13,6 +15,10 @@ const rootRoute = createBrowserRouter([
     children: [
       {
         path: "/",
+        element: <Main />,
+      },
+      {
+        path: "/home",
         element: <Main />,
       },
       {
@@ -30,6 +36,14 @@ const rootRoute = createBrowserRouter([
       {
         path: "/my-reviews",
         element: <MyReviews />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
       },
       {
         path: "/blog",

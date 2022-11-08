@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
   User,
   UserCredential,
 } from "firebase/auth";
@@ -17,6 +18,7 @@ interface AuthContextType {
   user: User | null;
   signInWithProvider: (provider: AuthProvider) => Promise<UserCredential>;
   logOut: () => Promise<void>;
+  updateUser: (name: string, profilePic: string, user: User) => Promise<void>;
 }
 
 export const AuthContext = createContext<null | AuthContextType>(null);
@@ -45,6 +47,14 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  const updateUser = (name: string, profilePic: string, user: User) => {
+    setLoading(true);
+    return updateProfile(user, {
+      displayName: name,
+      photoURL: profilePic,
+    });
+  };
+
   const signInWithProvider = (provider: AuthProvider) => {
     setLoading(true);
     return signInWithPopup(auth, provider);
@@ -57,7 +67,14 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <AuthContext.Provider
-      value={{ createNewUser, signIn, user, signInWithProvider, logOut }}
+      value={{
+        createNewUser,
+        signIn,
+        user,
+        signInWithProvider,
+        logOut,
+        updateUser,
+      }}
     >
       {children}
     </AuthContext.Provider>
