@@ -9,6 +9,7 @@ import AddService from "../pages/service/AddService";
 import ServiceDetail from "../pages/service/ServiceDetail";
 import Services from "../pages/service/Services";
 import ErrorPage from "../pages/error/ErrorPage";
+import PrivateRoute from "./PrivateRoute";
 const rootRoute = createBrowserRouter([
   {
     path: "/",
@@ -33,11 +34,19 @@ const rootRoute = createBrowserRouter([
       },
       {
         path: "/add-service",
-        element: <AddService />,
+        element: (
+          <PrivateRoute>
+            <AddService />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/my-reviews",
-        element: <MyReviews />,
+        element: (
+          <PrivateRoute>
+            <MyReviews />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",

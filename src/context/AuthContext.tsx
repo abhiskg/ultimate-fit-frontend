@@ -19,6 +19,7 @@ interface AuthContextType {
   signInWithProvider: (provider: AuthProvider) => Promise<UserCredential>;
   logOut: () => Promise<void>;
   updateUser: (name: string, profilePic: string, user: User) => Promise<void>;
+  loading: boolean;
 }
 
 export const AuthContext = createContext<null | AuthContextType>(null);
@@ -74,6 +75,7 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
         signInWithProvider,
         logOut,
         updateUser,
+        loading,
       }}
     >
       {children}
