@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { ServiceTypes } from "../../types/ServiceTypes";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 
 const ServiceCard = ({ service }: { service: ServiceTypes }) => {
   return (
