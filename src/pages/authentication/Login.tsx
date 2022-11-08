@@ -7,7 +7,6 @@ import { z } from "zod";
 import { AuthContext } from "../../context/AuthContext";
 import { sendEmailVerification, User } from "firebase/auth";
 import GoogleLogin from "../../components/login/GoogleLogin";
-import GithubLogin from "../../components/login/GithubLogin";
 import SpinLoader from "../../components/loaders/SpinLoader";
 
 const LoginSchema = z.object({
@@ -165,7 +164,6 @@ const Login = () => {
 
         <div className="my-6 flex gap-3">
           <GoogleLogin />
-          <GithubLogin />
         </div>
 
         <p className="text-center text-sm dark:text-gray-400">

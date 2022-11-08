@@ -80,6 +80,16 @@ const Header = () => {
                   My Reviews
                 </NavLink>
               </li>
+              <li>
+                <img
+                  alt="profile-picture"
+                  className="w-10 h-10 border rounded-full bg-gray-500 border-gray-300"
+                  src={
+                    authContext.user.photoURL ||
+                    "https://source.unsplash.com/40x40/?portrait?1"
+                  }
+                />
+              </li>
             </>
           ) : (
             <>

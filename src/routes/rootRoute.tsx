@@ -8,10 +8,12 @@ import MyReviews from "../pages/review/MyReviews";
 import AddService from "../pages/service/AddService";
 import ServiceDetail from "../pages/service/ServiceDetail";
 import Services from "../pages/service/Services";
+import ErrorPage from "../pages/error/ErrorPage";
 const rootRoute = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
