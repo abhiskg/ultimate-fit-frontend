@@ -1,11 +1,67 @@
-import { createContext, useState } from "react";
+import {
+  AuthProvider,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  User,
+  UserCredential,
+} from "firebase/auth";
+import { createContext, useEffect, useState } from "react";
+import { auth } from "../config/firebase.config";
 
-export const authContext = createContext(null);
+interface AuthContextType {
+  createNewUser: (email: string, password: string) => Promise<UserCredential>;
+  signIn: (email: string, password: string) => Promise<UserCredential>;
+  user: User | null;
+  signInWithProvider: (provider: AuthProvider) => Promise<UserCredential>;
+  logOut: () => Promise<void>;
+}
+
+export const AuthContext = createContext<null | AuthContextType>(null);
 
 const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<null | User>(null);
+  const [loading, setLoading] = useState(true);
 
-  return <authContext.Provider value={null}>{children}</authContext.Provider>;
+  useEffect(() => {
+    const unSubscribe = onAuthStateChanged(auth, (currUser) => {
+      setUser(currUser);
+      setLoading(false);
+    });
+    return () => {
+      unSubscribe();
+    };
+  }, []);
+
+  const createNewUser = (email: string, password: string) => {
+    setLoading(true);
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
+
+  const signIn = (email: string, password: string) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+
+  const signInWithProvider = (provider: AuthProvider) => {
+    setLoading(true);
+    return signInWithPopup(auth, provider);
+  };
+
+  const logOut = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
+
+  return (
+    <AuthContext.Provider
+      value={{ createNewUser, signIn, user, signInWithProvider, logOut }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
 export default AuthContextProvider;
