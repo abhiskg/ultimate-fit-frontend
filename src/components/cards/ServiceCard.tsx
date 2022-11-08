@@ -1,4 +1,7 @@
-const ServiceCard = () => {
+import { Link } from "react-router-dom";
+import { ServiceTypes } from "../../types/ServiceTypes";
+
+const ServiceCard = ({ service }: { service: ServiceTypes }) => {
   return (
     <div className="bg-gray-100 text-gray-900">
       <div className=" grid grid-cols-12  bg-gray-50">
@@ -6,14 +9,11 @@ const ServiceCard = () => {
           <img src="https://source.unsplash.com/random/640x480" alt="" />
         </div>
         <div className="flex flex-col p-6 col-span-full row-span-full lg:col-span-8 lg:p-10">
-          <h1 className="text-3xl font-semibold">Lorem ipsum dolor sit.</h1>
-          <p className="flex-1 pt-2">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste,
-            reprehenderit adipisci tempore voluptas laborum quod.
-          </p>
-          <a
+          <h1 className="text-3xl font-semibold">{service.name}</h1>
+          <p className="flex-1 pt-2">{service.description}</p>
+          <Link
             rel="noopener noreferrer"
-            href="#"
+            to={`../service/${service._id}`}
             className="inline-flex items-center pt-2 pb-6 space-x-2 text-sm text-violet-600"
           >
             <span>Read more</span>
@@ -29,9 +29,9 @@ const ServiceCard = () => {
                 clipRule="evenodd"
               ></path>
             </svg>
-          </a>
+          </Link>
           <div className="flex items-center justify-between pt-2">
-            <div className="font-medium">Price: 400$</div>
+            <div className="font-medium">Price: {service.price}$</div>
             <span className="text-xs">3 min read</span>
           </div>
         </div>
