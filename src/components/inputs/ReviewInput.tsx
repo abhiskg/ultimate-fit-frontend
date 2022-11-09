@@ -5,7 +5,7 @@ import { useAddReviewData } from "../../hooks/useReviewsData";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ReviewInputTypes } from "../../types/ReviewTypes";
 
-const ReviewInput = () => {
+const ReviewInput = ({ serviceName }: { serviceName: string }) => {
   const { id } = useParams();
   const { mutate } = useAddReviewData(id as string);
 
@@ -29,6 +29,7 @@ const ReviewInput = () => {
       userName,
       userImage,
       userEmail,
+      serviceName,
       serviceId,
     };
     mutate(reviewInputData);

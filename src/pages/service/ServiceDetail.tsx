@@ -36,7 +36,7 @@ const ServiceDetail = () => {
           <p>{service.description}</p>
         </section>
         <section className=" col-span-4 w-full">
-          <ReviewInput />
+          <ReviewInput serviceName={service.name} />
         </section>
       </div>
 

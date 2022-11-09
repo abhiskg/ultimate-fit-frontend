@@ -3,6 +3,7 @@ export interface ReviewInputTypes {
   userName:string
   userImage: string;
   userEmail: string;
+  serviceName:string;
   serviceId: string;
 }
 
