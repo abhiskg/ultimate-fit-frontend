@@ -1,6 +1,7 @@
 export interface ReviewInputTypes {
   review: string;
-  userImage: number;
+  userName:string
+  userImage: string;
   userEmail: string;
   serviceId: string;
 }

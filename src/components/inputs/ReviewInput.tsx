@@ -1,22 +1,52 @@
 import { useContext } from "react";
+import { useParams } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import { useAddReviewData } from "../../hooks/useReviewsData";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { ReviewInputTypes } from "../../types/ReviewTypes";
 
-const ReviewInput = ({ serviceId }: { serviceId: string }) => {
+const ReviewInput = () => {
+  const { id } = useParams();
+  const { mutate } = useAddReviewData(id as string);
+
   const authContext = useContext(AuthContext);
 
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<ReviewInputTypes>();
+
+  const handleAddReview: SubmitHandler<ReviewInputTypes> = (data) => {
+    const review = data.review;
+    const userName = authContext?.user?.displayName as string;
+    const userImage = authContext?.user?.photoURL as string;
+    const userEmail = authContext?.user?.email as string;
+    const serviceId = id as string;
+    const reviewInputData = {
+      review,
+      userName,
+      userImage,
+      userEmail,
+      serviceId,
+    };
+    mutate(reviewInputData);
+  };
+
   return (
-    <div className="flex flex-col max-w-xl p-8 shadow-sm rounded-xl lg:p-12 bg-gray-50 text-gray-800">
-      <div className="flex flex-col items-center w-full">
-        <h2 className="text-3xl font-semibold text-center">
+    <div className="flex max-w-xl flex-col rounded-xl bg-gray-50 p-8 text-gray-800 shadow-sm lg:p-12">
+      <div className="flex w-full flex-col items-center">
+        <h2 className="text-center text-3xl font-semibold">
           Your opinion matters!
         </h2>
-        <div className="flex flex-col items-center py-6 space-y-3">
+        <div className="flex flex-col items-center space-y-3 py-6">
           <span className="text-center">How was your experience?</span>
         </div>
         <div className="flex items-center gap-2">
           <img
             alt="profile-picture"
-            className="w-10 h-10 border rounded-full bg-gray-500 border-gray-300"
+            className="h-10 w-10 rounded-full border border-gray-300 bg-gray-500"
             src={
               authContext?.user?.photoURL ||
               "https://source.unsplash.com/40x40/?portrait?1"
@@ -24,20 +54,24 @@ const ReviewInput = ({ serviceId }: { serviceId: string }) => {
           />
           <div>{authContext?.user?.displayName}</div>
         </div>
-        <div className="flex flex-col w-full">
+        <form
+          onSubmit={handleSubmit(handleAddReview)}
+          className="flex w-full flex-col"
+        >
           <textarea
             rows={3}
+            {...register("review")}
             placeholder="Message..."
-            className="p-4 rounded-md resize-none text-gray-800 bg-gray-50"
+            className="resize-none rounded-md bg-gray-50 p-4 text-gray-800"
           ></textarea>
           <button
-            type="button"
+            type="submit"
             disabled={!authContext?.user?.uid}
-            className="py-4 my-8 font-semibold rounded-md text-gray-50 bg-violet-600"
+            className="my-8 rounded-md bg-violet-600 py-4 font-semibold text-gray-50"
           >
             Leave feedback
           </button>
-        </div>
+        </form>
       </div>
     </div>
   );
