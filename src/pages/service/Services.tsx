@@ -1,30 +1,33 @@
 import ServiceCard from "../../components/cards/ServiceCard";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { ServiceTypes } from "../../types/ServiceTypes";
+import { ServiceDataTypes } from "../../types/ServiceTypes";
 import { useState } from "react";
+import { useServicesData } from "../../hooks/useServicesData";
 
 const Services = () => {
   const [page, setPage] = useState(0);
   const [limit, setLimit] = useState(6);
 
-  const fetchAllServices = async () => {
-    return await axios.get(
-      `http://localhost:5000/api/services?page=${page}&limit=${limit}`
-    );
-  };
+  // const fetchAllServices = async () => {
+  //   return await axios.get(
+  //     `http://localhost:5000/api/services?page=${page}&limit=${limit}`
+  //   );
+  // };
 
-  const { data, isLoading, isError, error } = useQuery(
-    ["services", page],
-    fetchAllServices,
-    {
-      keepPreviousData: true,
-    }
-  );
+  // const { data, isLoading, isError, error } = useQuery(
+  //   ["services", page],
+  //   fetchAllServices,
+  //   {
+  //     keepPreviousData: true,
+  //   }
+  // );
+
+  const { data, isLoading, isError, error } = useServicesData(page, limit);
 
   const count = Math.ceil(data?.data.count / limit);
 
-  const allServices = data?.data.data as ServiceTypes[];
+  const allServices = data?.data.data as ServiceDataTypes[];
 
   if (isLoading) {
     return <div>Loading..</div>;

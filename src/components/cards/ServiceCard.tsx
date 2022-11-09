@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { ServiceTypes } from "../../types/ServiceTypes";
+import { ServiceDataTypes } from "../../types/ServiceTypes";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 
-const ServiceCard = ({ service }: { service: ServiceTypes }) => {
+const ServiceCard = ({ service }: { service: ServiceDataTypes }) => {
   return (
     <div className="bg-gray-100 text-gray-900">
       <div className=" grid grid-cols-12  bg-gray-50">

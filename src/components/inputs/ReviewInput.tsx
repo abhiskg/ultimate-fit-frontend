@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
-const ReviewInput = () => {
+const ReviewInput = ({ serviceId }: { serviceId: string }) => {
   const authContext = useContext(AuthContext);
 
   return (

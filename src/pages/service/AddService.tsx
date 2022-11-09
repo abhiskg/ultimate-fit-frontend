@@ -2,13 +2,10 @@ import axios from "axios";
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import SpinLoader from "../../components/loaders/SpinLoader";
+import { useAddServiceData } from "../../hooks/useServicesData";
+import { ServiceInputTypes } from "../../types/ServiceTypes";
 
-interface InputTypes {
-  name: string;
-  price: number;
-  image: string;
-  description: string;
-}
+
 
 const AddService = () => {
   const [loading, setLoading] = useState(false);
@@ -17,18 +14,21 @@ const AddService = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<InputTypes>();
+  } = useForm<ServiceInputTypes>();
 
-  const handleAddProduct: SubmitHandler<InputTypes> = async (inputData) => {
-    try {
-      const data = await axios.post(
-        "http://localhost:5000/api/services",
-        inputData
-      );
-      console.log(data);
-    } catch (err) {
-      console.log((err as Error).message);
-    }
+  const { mutate } = useAddServiceData();
+
+  const handleAddProduct: SubmitHandler<ServiceInputTypes> = (inputData) => {
+    mutate(inputData);
+    // try {
+    //   const data = await axios.post(
+    //     "http://localhost:5000/api/services",
+    //     inputData
+    //   );
+    //   console.log(data);
+    // } catch (err) {
+    //   console.log((err as Error).message);
+    // }
   };
 
   return (
@@ -36,7 +36,7 @@ const AddService = () => {
       <h1>Add Service</h1>
       <form
         onSubmit={handleSubmit(handleAddProduct)}
-        className="max-w-md mx-auto space-y-2"
+        className="mx-auto max-w-md space-y-2"
       >
         <div>
           <label htmlFor="name">Service Name</label>
