@@ -1,10 +1,17 @@
 import { useContext, useState } from "react";
+import toast from "react-hot-toast";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
 const Header = () => {
   const [menu, setMenu] = useState(false);
   const authContext = useContext(AuthContext);
+
+  const handleSignOut = () => {
+    authContext?.logOut().then(() => {
+      toast.success("Successfully Logout");
+    });
+  };
 
   return (
     <header className=" bg-primary sticky top-0 z-10 h-16 bg-violet-400 dark:bg-gray-900 dark:text-gray-100">
@@ -83,12 +90,29 @@ const Header = () => {
               <li>
                 <img
                   alt="profile-picture"
-                  className="w-10 h-10 border rounded-full bg-gray-500 border-gray-300"
+                  className="h-10 w-10 rounded-full border border-gray-300 bg-gray-500"
                   src={
                     authContext.user.photoURL ||
                     "https://source.unsplash.com/40x40/?portrait?1"
                   }
                 />
+              </li>
+              <li onClick={handleSignOut}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                  <polyline points="16 17 21 12 16 7"></polyline>
+                  <line x1="21" y1="12" x2="9" y2="12"></line>
+                </svg>
               </li>
             </>
           ) : (
