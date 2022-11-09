@@ -7,9 +7,13 @@ const ServiceCard = ({ service }: { service: ServiceTypes }) => {
   return (
     <div className="bg-gray-100 text-gray-900">
       <div className=" grid grid-cols-12  bg-gray-50">
-        <div className=" bg-gray-700 col-span-full lg:col-span-4">
-          <img src="https://source.unsplash.com/random/640x480" alt="" />
-        </div>
+        <PhotoProvider>
+          <PhotoView src="https://source.unsplash.com/random/640x480">
+            <div className=" bg-gray-700 col-span-full lg:col-span-4">
+              <img src="https://source.unsplash.com/random/640x480" alt="" />
+            </div>
+          </PhotoView>
+        </PhotoProvider>
         <div className="flex flex-col p-6 col-span-full row-span-full lg:col-span-8 lg:p-10">
           <h1 className="text-3xl font-semibold">{service.name}</h1>
           <p className="flex-1 pt-2">{service.description}</p>
