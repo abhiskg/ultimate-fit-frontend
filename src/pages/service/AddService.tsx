@@ -2,12 +2,12 @@ import axios from "axios";
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import SpinLoader from "../../components/loaders/SpinLoader";
+import useDocTitle from "../../hooks/useDocTitle";
 import { useAddServiceData } from "../../hooks/useServicesData";
 import { ServiceInputTypes } from "../../types/ServiceTypes";
 
-
-
 const AddService = () => {
+  useDocTitle("AddService");
   const [loading, setLoading] = useState(false);
   const {
     register,

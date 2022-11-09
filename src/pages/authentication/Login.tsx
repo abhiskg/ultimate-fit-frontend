@@ -8,6 +8,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { sendEmailVerification, User } from "firebase/auth";
 import GoogleLogin from "../../components/login/GoogleLogin";
 import SpinLoader from "../../components/loaders/SpinLoader";
+import useDocTitle from "../../hooks/useDocTitle";
 
 const LoginSchema = z.object({
   email: z
@@ -22,6 +23,7 @@ const LoginSchema = z.object({
 type LoginSchemaType = z.infer<typeof LoginSchema>;
 
 const Login = () => {
+  useDocTitle("Login");
   const [loading, setLoading] = useState(false);
   const [emailVerified, setEmailVerified] = useState(true);
   const [unVerifiedUser, setUnVerifiedUser] = useState<null | User>(null);

@@ -9,6 +9,7 @@ import { sendEmailVerification, User } from "firebase/auth";
 import GoogleLogin from "../../components/login/GoogleLogin";
 
 import SpinLoader from "../../components/loaders/SpinLoader";
+import useDocTitle from "../../hooks/useDocTitle";
 
 const RegisterSchema = z.object({
   name: z.string().min(1, { message: "Please Enter your name" }),
@@ -22,6 +23,7 @@ const RegisterSchema = z.object({
 type RegisterSchemaType = z.infer<typeof RegisterSchema>;
 
 const Register = () => {
+  useDocTitle('Register')
   const authContext = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
 

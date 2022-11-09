@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
+import toast from "react-hot-toast";
 import { ServiceInputTypes } from "../types/ServiceTypes";
-
 
 const fetchAllServices = async (page: number, limit: number) => {
   return await axios.get(
@@ -21,5 +21,9 @@ export const useServicesData = (page: number, limit: number) => {
 
 export const useAddServiceData = () => {
   const queryClient = useQueryClient();
-  return useMutation(addNewService);
+  return useMutation(addNewService, {
+    onSuccess: () => {
+      toast.success("Service Added Successfully");
+    },
+  });
 };

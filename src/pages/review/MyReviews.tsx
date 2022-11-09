@@ -2,10 +2,12 @@ import { useContext } from "react";
 import ConfirmationModal from "../../components/modals/ConfirmationModat";
 import EditModal from "../../components/modals/EditModal";
 import { AuthContext } from "../../context/AuthContext";
+import useDocTitle from "../../hooks/useDocTitle";
 import { useMyReviewsData } from "../../hooks/useMyReviewsData";
 import { ReviewDataTypes } from "../../types/ReviewTypes";
 
 const MyReviews = () => {
+  useDocTitle("MyReviews");
   const authContext = useContext(AuthContext);
   const userEmail = authContext?.user?.email as string;
   const { data, isLoading } = useMyReviewsData(userEmail);

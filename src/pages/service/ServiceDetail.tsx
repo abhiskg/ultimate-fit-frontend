@@ -3,12 +3,14 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import ReviewCard from "../../components/cards/ReviewCard";
 import ReviewInput from "../../components/inputs/ReviewInput";
+import useDocTitle from "../../hooks/useDocTitle";
 import { useReviewsData } from "../../hooks/useReviewsData";
 import { useServiceData } from "../../hooks/useServiceData";
 import { ReviewDataTypes } from "../../types/ReviewTypes";
 import { ServiceDataTypes } from "../../types/ServiceTypes";
 
 const ServiceDetail = () => {
+  useDocTitle("ServiceDetails");
   const { id } = useParams();
 
   const { data, isLoading } = useServiceData(id as string);

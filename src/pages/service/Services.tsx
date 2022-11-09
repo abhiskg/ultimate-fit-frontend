@@ -4,8 +4,10 @@ import axios from "axios";
 import { ServiceDataTypes } from "../../types/ServiceTypes";
 import { useState } from "react";
 import { useServicesData } from "../../hooks/useServicesData";
+import useDocTitle from "../../hooks/useDocTitle";
 
 const Services = () => {
+  useDocTitle("Services");
   const [page, setPage] = useState(0);
   const [limit, setLimit] = useState(6);
 

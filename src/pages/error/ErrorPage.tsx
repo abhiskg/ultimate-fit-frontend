@@ -1,24 +1,26 @@
 import { Link } from "react-router-dom";
+import useDocTitle from "../../hooks/useDocTitle";
 
 const ErrorPage = () => {
+  useDocTitle("ErrorPage");
   return (
-    <div className="bg-white relative overflow-hidden h-screen ">
-      <div className="container mx-auto px-6 md:px-12 relative z-10 flex items-center py-32">
-        <div className="container mx-auto px-6 flex flex-col justify-between items-center relative">
-          <div className="flex w-full items-center justify-center space-x-12 flex-col md:flex-row mb-16 md:mb-8">
-            <h1 className="font-thin text-center text-6xl text-gray-800">
+    <div className="relative h-screen overflow-hidden bg-white ">
+      <div className="container relative z-10 mx-auto flex items-center px-6 py-32 md:px-12">
+        <div className="container relative mx-auto flex flex-col items-center justify-between px-6">
+          <div className="mb-16 flex w-full flex-col items-center justify-center space-x-12 md:mb-8 md:flex-row">
+            <h1 className="text-center text-6xl font-thin text-gray-800">
               GOT LOST ?
             </h1>
             <Link
               to="/"
-              className="px-3 py-2  font-light transition ease-in duration-200 uppercase hover:bg-yellow-600 hover:text-white border-b text-2xl border-yellow-600 focus:outline-none"
+              className="border-b border-yellow-600  px-3 py-2 text-2xl font-light uppercase transition duration-200 ease-in hover:bg-yellow-600 hover:text-white focus:outline-none"
             >
               Back to HomePage
             </Link>
           </div>
-          <div className="block w-full mx-auto mt-6 md:mt-0 relative">
+          <div className="relative mx-auto mt-6 block w-full md:mt-0">
             <svg
-              className="max-w-2xl m-auto"
+              className="m-auto max-w-2xl"
               viewBox="0 0 1440 1024"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
