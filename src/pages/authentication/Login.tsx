@@ -49,7 +49,9 @@ const Login = () => {
       .then(({ user }) => {
         // Get jwt token
         axios
-          .post("https://ultimate-fit-backend.vercel.app/api/jwt", { email: user.email })
+          .post("https://ultimate-fit-backend.vercel.app/api/jwt", {
+            email: user.email,
+          })
           .then(({ data }) => {
             localStorage.setItem("service-token", data.token);
 
@@ -78,7 +80,7 @@ const Login = () => {
 
   return (
     <div>
-      <div className="mx-auto w-full max-w-md rounded-md bg-white p-4 shadow dark:bg-gray-900 dark:text-gray-100 sm:p-8">
+      <div className="mx-auto my-10 w-full max-w-md rounded-md bg-white p-4 shadow dark:bg-gray-900 dark:text-gray-100 sm:p-8">
         <h2 className="mb-5 text-center text-3xl font-semibold">Login</h2>
 
         <form
@@ -152,7 +154,7 @@ const Login = () => {
           <Link
             to="/register"
             rel="noopener noreferrer"
-            className="text-violet-400 hover:underline focus:underline"
+            className="text-blue-500 hover:underline focus:underline"
           >
             SignUp
           </Link>
