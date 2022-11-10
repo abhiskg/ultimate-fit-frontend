@@ -33,10 +33,11 @@ const ReviewInput = ({ serviceName }: { serviceName: string }) => {
       serviceId,
     };
     mutate(reviewInputData);
+    reset();
   };
 
   return (
-    <div className="flex flex-col rounded-xl bg-gray-50 p-4 text-gray-800 shadow-sm lg:p-8">
+    <div className="flex flex-col rounded-xl bg-gray-100 p-4 text-gray-800 shadow-sm lg:p-8">
       <div className="flex w-full flex-col ">
         <div className="flex flex-col items-center space-y-2 py-4">
           <span className="text-center text-2xl  font-semibold">

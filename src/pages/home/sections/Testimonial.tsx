@@ -1,11 +1,10 @@
 const Testimonial = () => {
   return (
-    <section className="bg-gray-100 py-10 sm:py-16 lg:py-24">
+    <section className="mb-10 bg-gray-100 py-10 sm:py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold leading-tight text-gray-800 sm:text-4xl lg:text-5xl">
-            Trusted by <span className="text-blue-600">30k+</span> world class
-            companies & design teams
+            Trusted by <span className="text-blue-600">200+</span> of clients.
           </h2>
         </div>
 
@@ -31,16 +30,14 @@ const Testimonial = () => {
               </div>
               <blockquote className="mt-7">
                 <p className="text-lg text-black">
-                  “Amet minim mollit non deserunt ullam co est sit aliqua dolor
-                  do amet sint. Velit officia consequat duis enim velit mollit.
-                  Exercitation veniam consequat”
+                  “Abhi is an excellent trainer. He always taking feedback and
+                  personalizing the coaching to my needs. He has helped me
+                  transform my body and health so much, even beyond my
+                  expectations and goals.”
                 </p>
               </blockquote>
               <p className="tex-tblack mt-9 text-base font-semibold">
                 Jenny Wilson
-              </p>
-              <p className="mt-1 text-base text-gray-600">
-                Project Manager at Microsoft
               </p>
             </div>
           </div>
@@ -66,16 +63,14 @@ const Testimonial = () => {
               </div>
               <blockquote className="mt-7">
                 <p className="text-lg text-black">
-                  “Amet minim mollit non deserunt ullam co est sit aliqua dolor
-                  do amet sint. Velit officia consequat duis enim velit mollit.
-                  Exercitation veniam consequat”
+                  “I am very happy with all the professional methods and the
+                  speed from trainer Abhi. We are still in the beginning of our
+                  journey but I recommend! Invest in yourself with quality
+                  people.”
                 </p>
               </blockquote>
               <p className="tex-tblack mt-9 text-base font-semibold">
                 Robert Fox
-              </p>
-              <p className="mt-1 text-base text-gray-600">
-                Founder at Brain.co
               </p>
             </div>
           </div>
@@ -101,16 +96,14 @@ const Testimonial = () => {
               </div>
               <blockquote className="mt-7">
                 <p className="text-lg text-black">
-                  “Amet minim mollit non deserunt ullam co est sit aliqua dolor
-                  do amet sint. Velit officia consequat duis enim velit mollit.
-                  Exercitation veniam consequat”
+                  “Amazing response, very accurate to what I needed good push to
+                  help me change myself, without Abhi I would still be stuck and
+                  lazy, now i'm happy and my life got different now! Keep up the
+                  good work”
                 </p>
               </blockquote>
               <p className="tex-tblack mt-9 text-base font-semibold">
                 Kristin Watson
-              </p>
-              <p className="mt-1 text-base text-gray-600">
-                UX Designer at Google
               </p>
             </div>
           </div>

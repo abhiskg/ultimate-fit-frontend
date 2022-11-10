@@ -14,7 +14,7 @@ const Header = () => {
   };
 
   return (
-    <header className=" bg-primary sticky top-0 z-10 h-16 bg-blue-400 dark:bg-gray-900 dark:text-gray-100">
+    <header className=" bg-primary sticky top-0 z-10 h-16 bg-blue-500 text-white dark:bg-gray-900 dark:text-gray-100">
       <nav className="custom-width mx-auto flex h-full items-center justify-between">
         <Link className="flex items-center gap-1 text-xl font-semibold" to="/">
           <svg
@@ -23,7 +23,7 @@ const Header = () => {
             height="28"
             viewBox="0 0 24 24"
             stroke-width="1.5"
-            stroke="#032FB1"
+            stroke="#fff"
             fill="none"
             stroke-linecap="round"
             stroke-linejoin="round"
@@ -34,34 +34,34 @@ const Header = () => {
             <path d="M13 21v-8l3 -5.5" />
             <path d="M8 4.5l4 2l4 1l4 3.5l-2 3.5" />
           </svg>
-          <span>Ultimate Fit</span>
+          <span className="text-white">Ultimate Fit</span>
         </Link>
         <ul className="relative hidden items-center gap-5 font-semibold sm:flex">
-          <li className="hover:text-blue-700">
+          <li className="hover:text-blue-900">
             <NavLink
               to="/home"
               className={({ isActive }) =>
-                isActive ? " text-blue-700 dark:text-violet-400" : ""
+                isActive ? " text-blue-900 dark:text-violet-400" : ""
               }
             >
               Home
             </NavLink>
           </li>
-          <li className="hover:text-blue-700">
+          <li className="hover:text-blue-900">
             <NavLink
               to="/services"
               className={({ isActive }) =>
-                isActive ? " text-blue-700 dark:text-violet-400" : ""
+                isActive ? " text-blue-900 dark:text-violet-400" : ""
               }
             >
               Services
             </NavLink>
           </li>
-          <li className="hover:text-blue-700">
+          <li className="hover:text-blue-900">
             <NavLink
               to="/blog"
               className={({ isActive }) =>
-                isActive ? " text-blue-700 dark:text-violet-400" : ""
+                isActive ? " text-blue-900 dark:text-violet-400" : ""
               }
             >
               Blog
@@ -69,21 +69,21 @@ const Header = () => {
           </li>
           {authContext?.user && authContext.user.uid ? (
             <>
-              <li className="hover:text-blue-700">
+              <li className="hover:text-blue-900">
                 <NavLink
                   to="/add-service"
                   className={({ isActive }) =>
-                    isActive ? " text-blue-700 dark:text-violet-400" : ""
+                    isActive ? " text-blue-900 dark:text-violet-400" : ""
                   }
                 >
                   Add Service
                 </NavLink>
               </li>
-              <li className="hover:text-blue-700">
+              <li className="hover:text-blue-900">
                 <NavLink
                   to="/my-reviews"
                   className={({ isActive }) =>
-                    isActive ? " text-blue-700 dark:text-violet-400" : ""
+                    isActive ? " text-blue-900 dark:text-violet-400" : ""
                   }
                 >
                   My Reviews
@@ -99,7 +99,10 @@ const Header = () => {
                   }
                 />
               </li>
-              <li onClick={handleSignOut}>
+              <li
+                className="cursor-pointer hover:text-blue-900"
+                onClick={handleSignOut}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -119,11 +122,11 @@ const Header = () => {
             </>
           ) : (
             <>
-              <li className="hover:text-blue-700">
+              <li className="hover:text-blue-900">
                 <NavLink
                   to="/login"
                   className={({ isActive }) =>
-                    isActive ? " text-blue-700 dark:text-violet-400" : ""
+                    isActive ? " text-blue-900 dark:text-violet-400" : ""
                   }
                 >
                   Login

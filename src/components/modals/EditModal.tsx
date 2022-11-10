@@ -47,7 +47,7 @@ export default function EditModal({ review }: { review: ReviewDataTypes }) {
               <div className="relative flex w-full flex-col rounded-lg border-0 bg-white shadow-lg outline-none focus:outline-none">
                 {/*header*/}
                 <div className="flex items-start justify-between rounded-t border-b border-solid border-slate-200 p-5">
-                  <div className="text-2xl font-semibold">Confirm Delete</div>
+                  <div className="text-2xl font-semibold">Confirm Edit</div>
                   <button
                     className="float-right ml-auto border-0 bg-transparent p-1 text-3xl font-semibold leading-none text-black opacity-5 outline-none focus:outline-none"
                     onClick={() => setShowModal(false)}
@@ -61,10 +61,12 @@ export default function EditModal({ review }: { review: ReviewDataTypes }) {
                 <div className="relative flex-auto p-4">
                   <textarea
                     ref={messageRef}
+                    className="rounded-md border p-2"
                     defaultValue={review.review}
                     name=""
                     id=""
-                    cols={30}
+                    cols={70}
+                    rows={5}
                   ></textarea>
                 </div>
                 {/*footer*/}
@@ -77,11 +79,11 @@ export default function EditModal({ review }: { review: ReviewDataTypes }) {
                     Cancel
                   </button>
                   <button
-                    className="mr-1 mb-1 rounded bg-red-500 px-6 py-3 text-sm font-bold uppercase text-white shadow outline-none transition-all duration-150 ease-linear hover:shadow-lg focus:outline-none active:bg-emerald-600"
+                    className="mr-1 mb-1 rounded bg-blue-500 px-6 py-3 text-sm font-bold uppercase text-white shadow outline-none transition-all duration-150 ease-linear hover:shadow-lg focus:outline-none active:bg-emerald-600"
                     type="button"
                     onClick={handleUpdate}
                   >
-                    Delete
+                    Update
                   </button>
                 </div>
               </div>

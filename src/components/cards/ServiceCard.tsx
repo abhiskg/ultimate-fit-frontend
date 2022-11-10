@@ -29,7 +29,7 @@ const ServiceCard = ({ service }: { service: ServiceDataTypes }) => {
           <Link
             rel="noopener noreferrer"
             to={`${service._id}`}
-            className="inline-flex items-center space-x-2 pt-2 pb-2 text-sm text-violet-600"
+            className="inline-flex items-center space-x-2 pt-2 pb-2 text-sm text-blue-500"
           >
             <span>View Details</span>
             <svg

@@ -7,8 +7,7 @@ const Process = () => {
             How does it work?
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-gray-600">
-            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-            sint. Velit officia consequat duis.
+            Here are the steps to get a service.
           </p>
         </div>
 
@@ -30,8 +29,8 @@ const Process = () => {
                 Create a free account
               </h3>
               <p className="mt-4 text-base text-gray-600">
-                Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-                amet sint. Velit officia consequat duis enim velit mollit.
+                Create a free account with your name, email, photo and password
+                or login via Google.
               </p>
             </div>
 
@@ -40,11 +39,11 @@ const Process = () => {
                 <span className="text-xl font-semibold text-gray-700"> 2 </span>
               </div>
               <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">
-                Build your website
+                Choose your Service
               </h3>
               <p className="mt-4 text-base text-gray-600">
-                Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-                amet sint. Velit officia consequat duis enim velit mollit.
+                Please go through every services and choose what's best for you
+                according to your goal.
               </p>
             </div>
 
@@ -53,11 +52,11 @@ const Process = () => {
                 <span className="text-xl font-semibold text-gray-700"> 3 </span>
               </div>
               <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">
-                Release & Launch
+                Pay & Launch
               </h3>
               <p className="mt-4 text-base text-gray-600">
-                Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-                amet sint. Velit officia consequat duis enim velit mollit.
+                Pay for the service and your service will be start, I'll then
+                knock you and will provide further instruction.
               </p>
             </div>
           </div>

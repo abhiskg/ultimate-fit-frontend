@@ -61,7 +61,7 @@ const Blog = () => {
         </p>
       </details> */}
       <h1 className="header-style">Blog</h1>
-      <div className="inner-width mx-auto space-y-4">
+      <div className="inner-width mx-auto mb-20 space-y-4">
         {data.map((blog) => (
           <details key={blog.id} className="group">
             <summary className="flex cursor-pointer items-center justify-between rounded-lg bg-gray-50 p-4">

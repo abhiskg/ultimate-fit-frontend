@@ -28,7 +28,7 @@ const ServiceMiniCard = ({ service }: { service: ServiceDataTypes }) => {
         <div className="flex flex-wrap items-center ">
           <Link
             to={`../services/${service._id}`}
-            className="inline-flex items-center text-indigo-500 md:mb-2 lg:mb-0"
+            className="inline-flex items-center text-blue-500 md:mb-2 lg:mb-0"
           >
             View Details
             <svg

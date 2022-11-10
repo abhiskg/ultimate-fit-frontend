@@ -4,6 +4,7 @@ import PingLoader from "../../components/loaders/PingLoader";
 import useDocTitle from "../../hooks/useDocTitle";
 import { useHomePageServicesData } from "../../hooks/useServicesData";
 import { ServiceDataTypes } from "../../types/ServiceTypes";
+import Hero from "./sections/Hero";
 import Process from "./sections/Process";
 import Testimonial from "./sections/Testimonial";
 
@@ -18,7 +19,10 @@ const Main = () => {
 
   return (
     <div className="custom-width mx-auto">
-      <div className="grid w-full grid-cols-3 gap-3">
+      <div>
+        <Hero />
+      </div>
+      <div className="grid w-full gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {services.length > 0 &&
           services.map((service) => (
             <ServiceMiniCard key={service._id} service={service} />
@@ -27,7 +31,7 @@ const Main = () => {
       <div className="my-5 flex justify-center rounded">
         <Link
           to="/services"
-          className="rounded bg-blue-300 px-3 py-2 font-medium"
+          className="rounded bg-blue-500 px-3 py-2 font-medium text-white"
         >
           See All
         </Link>

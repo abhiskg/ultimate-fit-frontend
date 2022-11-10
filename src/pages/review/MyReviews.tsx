@@ -17,7 +17,7 @@ const MyReviews = () => {
     return <PingLoader />;
   }
   if (isError) {
-    authContext?.logOut();
+    // authContext?.logOut();
     return (
       <div className="header-style -mt-16 flex h-screen items-center justify-center">
         No Reviews Were Added
@@ -35,8 +35,8 @@ const MyReviews = () => {
   }
 
   return (
-    <div className="custom-width mx-auto  text-gray-800 ">
-      <h2 className="mb-4 text-2xl font-semibold leading-tight">Invoices</h2>
+    <div className="custom-width mx-auto min-h-screen  text-gray-800 ">
+      <h2 className="header-style">My Reviews</h2>
       <div className="overflow-x-auto">
         <table className="min-w-full text-xs">
           <colgroup>

@@ -35,11 +35,11 @@ const Services = () => {
         ))}
       </div>
       {/* Pagination */}
-      <div className="flex justify-end">
+      <div className="mb-10 flex justify-end">
         {[...Array(count).keys()].map((num) => (
           <span
-            className={`mx-1 cursor-pointer bg-slate-500 py-2 px-3 font-medium ${
-              num === page && "bg-blue-300"
+            className={`mx-1 cursor-pointer  py-2 px-3 font-medium text-white ${
+              num === page ? "bg-blue-500" : "bg-blue-300"
             }`}
             key={num}
             onClick={() => setPage(num)}

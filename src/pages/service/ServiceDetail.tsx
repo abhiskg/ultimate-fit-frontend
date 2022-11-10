@@ -31,23 +31,31 @@ const ServiceDetail = () => {
   return (
     <div className="custom-width mx-auto">
       <h1 className="header-style">{service.name}</h1>
-      <div className="grid grid-cols-12 gap-2">
-        <section className="col-span-8 w-full">
+      <div className="grid grid-cols-12 gap-5">
+        <section className="col-span-full w-full lg:col-span-7 xl:col-span-8">
           <img src={service.image} className="h-96 w-full" alt="" />
-          <p>Service Price:{service.price}</p>
-          <p>{service.description}</p>
+          <p className="my-2 text-lg font-medium">
+            Service Price: {service.price}$
+          </p>
+          <p className="text-gray-800">Description: {service.description}</p>
         </section>
-        <section className=" col-span-4 w-full">
+        <section className=" col-span-full w-full lg:col-span-5 xl:col-span-4">
           <ReviewInput serviceName={service.name} />
         </section>
       </div>
 
       <div className="">
-        {reviews.length < 1 && <div>No Review Found</div>}
-        {reviews.length > 0 &&
-          reviews.map((review) => (
-            <ReviewCard key={review._id} review={review} />
-          ))}
+        {reviews.length < 1 && (
+          <div className="my-10 text-center text-2xl font-medium">
+            No Review Found
+          </div>
+        )}
+        <div className="my-10">
+          {reviews.length > 0 &&
+            reviews.map((review) => (
+              <ReviewCard key={review._id} review={review} />
+            ))}
+        </div>
       </div>
     </div>
   );
