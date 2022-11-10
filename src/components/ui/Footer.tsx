@@ -25,93 +25,42 @@ const Footer = () => {
         <div className="-mb-10 mt-10 flex flex-grow flex-wrap text-center md:mt-0 md:pl-20 md:text-left">
           <div className="w-full px-4 md:w-1/2 lg:w-1/4">
             <h2 className="title-font mb-3 text-sm font-medium tracking-widest text-gray-900">
-              CATEGORIES
+              Home
             </h2>
-            <nav className="mb-10 list-none">
-              <li>
-                <a className="text-gray-600 hover:text-gray-800">First Link</a>
-              </li>
-              <li>
-                <a className="text-gray-600 hover:text-gray-800">Second Link</a>
-              </li>
-              <li>
-                <a className="text-gray-600 hover:text-gray-800">Third Link</a>
-              </li>
-              <li>
-                <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
-              </li>
-            </nav>
           </div>
           <div className="w-full px-4 md:w-1/2 lg:w-1/4">
             <h2 className="title-font mb-3 text-sm font-medium tracking-widest text-gray-900">
-              CATEGORIES
+              Services
             </h2>
-            <nav className="mb-10 list-none">
-              <li>
-                <a className="text-gray-600 hover:text-gray-800">First Link</a>
-              </li>
-              <li>
-                <a className="text-gray-600 hover:text-gray-800">Second Link</a>
-              </li>
-              <li>
-                <a className="text-gray-600 hover:text-gray-800">Third Link</a>
-              </li>
-              <li>
-                <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
-              </li>
-            </nav>
           </div>
           <div className="w-full px-4 md:w-1/2 lg:w-1/4">
             <h2 className="title-font mb-3 text-sm font-medium tracking-widest text-gray-900">
-              CATEGORIES
+              Blog
             </h2>
-            <nav className="mb-10 list-none">
-              <li>
-                <a className="text-gray-600 hover:text-gray-800">First Link</a>
-              </li>
-              <li>
-                <a className="text-gray-600 hover:text-gray-800">Second Link</a>
-              </li>
-              <li>
-                <a className="text-gray-600 hover:text-gray-800">Third Link</a>
-              </li>
-              <li>
-                <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
-              </li>
-            </nav>
           </div>
           <div className="w-full px-4 md:w-1/2 lg:w-1/4">
             <h2 className="title-font mb-3 text-sm font-medium tracking-widest text-gray-900">
-              CATEGORIES
+              Login
             </h2>
-            <nav className="mb-10 list-none">
-              <li>
-                <a className="text-gray-600 hover:text-gray-800">First Link</a>
-              </li>
-              <li>
-                <a className="text-gray-600 hover:text-gray-800">Second Link</a>
-              </li>
-              <li>
-                <a className="text-gray-600 hover:text-gray-800">Third Link</a>
-              </li>
-              <li>
-                <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
-              </li>
-            </nav>
+          </div>
+          <div className="w-full px-4 md:w-1/2 lg:w-1/4">
+            <h2 className="title-font mb-3 text-sm font-medium tracking-widest text-gray-900">
+              Register
+            </h2>
           </div>
         </div>
       </div>
       <div className="bg-gray-100">
         <div className="container mx-auto flex flex-col flex-wrap py-4 px-5 sm:flex-row">
           <p className="text-center text-sm text-gray-500 sm:text-left">
-            © 2020 Tailblocks —
+            © 2022 Tailblocks —
             <a
               href="https://twitter.com/knyttneve"
               rel="noopener noreferrer"
               className="ml-1 text-gray-600"
               target="_blank"
             >
-              @knyttneve
+              @abhishek
             </a>
           </p>
           <span className="mt-2 inline-flex justify-center sm:ml-auto sm:mt-0 sm:justify-start">

@@ -3,6 +3,7 @@ import ServiceCard from "../../components/cards/ServiceCard";
 import { ServiceDataTypes } from "../../types/ServiceTypes";
 import { useServicesData } from "../../hooks/useServicesData";
 import useDocTitle from "../../hooks/useDocTitle";
+import PingLoader from "../../components/loaders/PingLoader";
 
 const Services = () => {
   useDocTitle("Services");
@@ -16,7 +17,7 @@ const Services = () => {
   const allServices = data?.data.data as ServiceDataTypes[];
 
   if (isLoading) {
-    return <div>Loading..</div>;
+    return <PingLoader />;
   }
 
   if (isError && error instanceof Error) {
@@ -25,8 +26,9 @@ const Services = () => {
 
   return (
     <div className="custom-width mx-auto">
+      <h1 className="header-style">Services</h1>
       {allServices.map((service) => (
-        <div key={service._id}>
+        <div className="mb-5" key={service._id}>
           <ServiceCard service={service} />
         </div>
       ))}

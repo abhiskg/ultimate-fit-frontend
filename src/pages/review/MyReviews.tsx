@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import PingLoader from "../../components/loaders/PingLoader";
 import ConfirmationModal from "../../components/modals/ConfirmationModat";
 import EditModal from "../../components/modals/EditModal";
 import { AuthContext } from "../../context/AuthContext";
@@ -13,7 +14,7 @@ const MyReviews = () => {
   const { data, isLoading, isError, error } = useMyReviewsData(userEmail);
 
   if (isLoading) {
-    return <div>Loading</div>;
+    return <PingLoader />;
   }
   if (isError) {
     return authContext?.logOut();
@@ -21,7 +22,11 @@ const MyReviews = () => {
   const reviews = data?.data.data as ReviewDataTypes[];
 
   if (reviews.length < 1) {
-    return <div>No Reviews Were Added</div>;
+    return (
+      <div className="header-style -mt-16 flex h-screen items-center justify-center">
+        No Reviews Were Added
+      </div>
+    );
   }
 
   return (

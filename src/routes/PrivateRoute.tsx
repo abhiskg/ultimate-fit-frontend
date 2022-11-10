@@ -9,7 +9,7 @@ const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
 
   if (authContext?.loading) {
     return (
-      <div className="mt-20 flex justify-center">
+      <div>
         <PingLoader />
       </div>
     );

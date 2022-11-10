@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import ReviewCard from "../../components/cards/ReviewCard";
 import ReviewInput from "../../components/inputs/ReviewInput";
+import PingLoader from "../../components/loaders/PingLoader";
 import useDocTitle from "../../hooks/useDocTitle";
 import { useReviewsData } from "../../hooks/useReviewsData";
 import { useServiceData } from "../../hooks/useServiceData";
@@ -17,7 +18,7 @@ const ServiceDetail = () => {
   );
 
   if (isLoading) {
-    return <div>Loading</div>;
+    return <PingLoader />;
   }
   if (isReviewLoading) {
     return <div>Loading</div>;
