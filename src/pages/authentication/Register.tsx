@@ -45,7 +45,9 @@ const Register = () => {
       .then(({ user }) => {
         if (user) {
           axios
-            .post("http://localhost:5000/api/jwt", { email: user.email })
+            .post("https://ultimate-fit-backend.vercel.app/api/jwt", {
+              email: user.email,
+            })
             .then(({ data }) => {
               localStorage.setItem("service-token", data.token);
 

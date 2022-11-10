@@ -27,22 +27,27 @@ const Services = () => {
   return (
     <div className="custom-width mx-auto">
       <h1 className="header-style">Services</h1>
-      {allServices.map((service) => (
-        <div className="mb-5" key={service._id}>
-          <ServiceCard service={service} />
-        </div>
-      ))}
-      {[...Array(count).keys()].map((num) => (
-        <span
-          className={`mx-1 bg-slate-500 py-2 px-3 ${
-            num === page && "bg-blue-300"
-          }`}
-          key={num}
-          onClick={() => setPage(num)}
-        >
-          {num + 1}
-        </span>
-      ))}
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-1">
+        {allServices.map((service) => (
+          <div className="mb-5" key={service._id}>
+            <ServiceCard service={service} />
+          </div>
+        ))}
+      </div>
+      {/* Pagination */}
+      <div className="flex justify-end">
+        {[...Array(count).keys()].map((num) => (
+          <span
+            className={`mx-1 cursor-pointer bg-slate-500 py-2 px-3 font-medium ${
+              num === page && "bg-blue-300"
+            }`}
+            key={num}
+            onClick={() => setPage(num)}
+          >
+            {num + 1}
+          </span>
+        ))}
+      </div>
     </div>
   );
 };

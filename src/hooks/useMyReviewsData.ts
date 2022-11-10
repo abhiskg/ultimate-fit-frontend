@@ -9,7 +9,7 @@ interface UpdateDataType {
 
 const fetchReviewsByUserEmail = (userEmail: string) => {
   return axios.get(
-    `http://localhost:5000/api/reviews/my-reviews?userEmail=${userEmail}`,
+    `https://ultimate-fit-backend.vercel.app/api/reviews/my-reviews?userEmail=${userEmail}`,
     {
       headers: {
         authorization: `Bearer ${localStorage.getItem("service-token")}`,
@@ -19,10 +19,15 @@ const fetchReviewsByUserEmail = (userEmail: string) => {
 };
 
 const deleteReviewData = (id: string) => {
-  return axios.delete(`http://localhost:5000/api/reviews/${id}`);
+  return axios.delete(
+    `https://ultimate-fit-backend.vercel.app/api/reviews/${id}`
+  );
 };
 const updateReviewData = ({ id, review }: UpdateDataType) => {
-  return axios.patch(`http://localhost:5000/api/reviews/${id}`, { review });
+  return axios.patch(
+    `https://ultimate-fit-backend.vercel.app/api/reviews/${id}`,
+    { review }
+  );
 };
 
 export const useMyReviewsData = (userEmail: string) => {

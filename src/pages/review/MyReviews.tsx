@@ -17,7 +17,12 @@ const MyReviews = () => {
     return <PingLoader />;
   }
   if (isError) {
-    return authContext?.logOut();
+    authContext?.logOut();
+    return (
+      <div className="header-style -mt-16 flex h-screen items-center justify-center">
+        No Reviews Were Added
+      </div>
+    );
   }
   const reviews = data?.data.data as ReviewDataTypes[];
 

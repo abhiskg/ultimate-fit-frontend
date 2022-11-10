@@ -1,61 +1,80 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
-    <footer className="body-font text-gray-600">
-      <div className="container mx-auto flex flex-col flex-wrap px-5 py-24 md:flex-row md:flex-nowrap md:items-center lg:items-start">
+    <footer className="border-t">
+      <div className="custom-width mx-auto flex flex-col flex-wrap  py-10 md:flex-row md:flex-nowrap md:items-center lg:items-start">
         <div className="mx-auto w-64 flex-shrink-0 text-center md:mx-0 md:text-left">
           <a className="title-font flex items-center justify-center font-medium text-gray-900 md:justify-start">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              className="h-10 w-10 rounded-full bg-indigo-500 p-2 text-white"
+              className="h-10 w-10 rounded-full bg-blue-500 p-2 text-white"
+              width="28"
+              height="28"
               viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
             >
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <circle cx="18" cy="4" r="1" />
+              <path d="M3 9l4.5 1l3 2.5" />
+              <path d="M13 21v-8l3 -5.5" />
+              <path d="M8 4.5l4 2l4 1l4 3.5l-2 3.5" />
             </svg>
-            <span className="ml-3 text-xl">Tailblocks</span>
+
+            <span className="ml-3 text-xl">Ultimate Fit</span>
           </a>
           <p className="mt-2 text-sm text-gray-500">
-            Air plant banjo lyft occupy retro adaptogen indego
+            The body achieves what the mind believes
           </p>
         </div>
-        <div className="-mb-10 mt-10 flex flex-grow flex-wrap text-center md:mt-0 md:pl-20 md:text-left">
-          <div className="w-full px-4 md:w-1/2 lg:w-1/4">
-            <h2 className="title-font mb-3 text-sm font-medium tracking-widest text-gray-900">
-              Home
-            </h2>
-          </div>
-          <div className="w-full px-4 md:w-1/2 lg:w-1/4">
-            <h2 className="title-font mb-3 text-sm font-medium tracking-widest text-gray-900">
-              Services
-            </h2>
-          </div>
-          <div className="w-full px-4 md:w-1/2 lg:w-1/4">
-            <h2 className="title-font mb-3 text-sm font-medium tracking-widest text-gray-900">
-              Blog
-            </h2>
-          </div>
-          <div className="w-full px-4 md:w-1/2 lg:w-1/4">
-            <h2 className="title-font mb-3 text-sm font-medium tracking-widest text-gray-900">
-              Login
-            </h2>
-          </div>
-          <div className="w-full px-4 md:w-1/2 lg:w-1/4">
-            <h2 className="title-font mb-3 text-sm font-medium tracking-widest text-gray-900">
-              Register
-            </h2>
-          </div>
+        <div className="-mb-10 mt-10 flex flex-grow flex-wrap justify-between text-center md:mt-5 md:pl-20 md:text-left">
+          <Link
+            to="/home"
+            className="title-font mb-3 text-sm font-medium tracking-widest text-gray-900"
+          >
+            Home
+          </Link>
+
+          <Link
+            to="/services"
+            className="title-font mb-3 text-sm font-medium tracking-widest text-gray-900"
+          >
+            Services
+          </Link>
+
+          <Link
+            to="/blog"
+            className="title-font mb-3 text-sm font-medium tracking-widest text-gray-900"
+          >
+            Blog
+          </Link>
+
+          <Link
+            to="/login"
+            className="title-font mb-3 text-sm font-medium tracking-widest text-gray-900"
+          >
+            Login
+          </Link>
+
+          <Link
+            to="/register"
+            className="title-font mb-3 text-sm font-medium tracking-widest text-gray-900"
+          >
+            Register
+          </Link>
         </div>
       </div>
+
       <div className="bg-gray-100">
-        <div className="container mx-auto flex flex-col flex-wrap py-4 px-5 sm:flex-row">
+        <div className="custom-width mx-auto flex flex-col flex-wrap py-4  sm:flex-row">
           <p className="text-center text-sm text-gray-500 sm:text-left">
             © 2022 Tailblocks —
             <a
-              href="https://twitter.com/knyttneve"
+              href="https://www.facebook.com/Abhiskg20"
               rel="noopener noreferrer"
               className="ml-1 text-gray-600"
               target="_blank"

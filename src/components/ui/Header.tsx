@@ -14,74 +14,76 @@ const Header = () => {
   };
 
   return (
-    <header className=" bg-primary sticky top-0 z-10 h-16 bg-violet-400 dark:bg-gray-900 dark:text-gray-100">
+    <header className=" bg-primary sticky top-0 z-10 h-16 bg-blue-400 dark:bg-gray-900 dark:text-gray-100">
       <nav className="custom-width mx-auto flex h-full items-center justify-between">
         <Link className="flex items-center gap-1 text-xl font-semibold" to="/">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="icon icon-tabler icon-tabler-bolt"
             width="28"
             height="28"
             viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
+            stroke-width="1.5"
+            stroke="#032FB1"
             fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+            stroke-linecap="round"
+            stroke-linejoin="round"
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <polyline points="13 3 13 10 19 10 11 21 11 14 5 14 13 3" />
+            <circle cx="18" cy="4" r="1" />
+            <path d="M3 9l4.5 1l3 2.5" />
+            <path d="M13 21v-8l3 -5.5" />
+            <path d="M8 4.5l4 2l4 1l4 3.5l-2 3.5" />
           </svg>
-          <span>H</span>
+          <span>Ultimate Fit</span>
         </Link>
         <ul className="relative hidden items-center gap-5 font-semibold sm:flex">
-          <li className="hover:text-violet-600">
+          <li className="hover:text-blue-700">
             <NavLink
               to="/home"
               className={({ isActive }) =>
-                isActive ? " text-violet-600 dark:text-violet-400" : ""
+                isActive ? " text-blue-700 dark:text-violet-400" : ""
               }
             >
               Home
             </NavLink>
           </li>
-          <li className="hover:text-violet-600">
+          <li className="hover:text-blue-700">
             <NavLink
               to="/services"
               className={({ isActive }) =>
-                isActive ? " text-violet-600 dark:text-violet-400" : ""
+                isActive ? " text-blue-700 dark:text-violet-400" : ""
               }
             >
               Services
             </NavLink>
           </li>
-          <li className="hover:text-violet-600">
+          <li className="hover:text-blue-700">
             <NavLink
               to="/blog"
               className={({ isActive }) =>
-                isActive ? " text-violet-600 dark:text-violet-400" : ""
+                isActive ? " text-blue-700 dark:text-violet-400" : ""
               }
             >
               Blog
             </NavLink>
           </li>
-          {authContext?.user ? (
+          {authContext?.user && authContext.user.uid ? (
             <>
-              <li className="hover:text-violet-600">
+              <li className="hover:text-blue-700">
                 <NavLink
                   to="/add-service"
                   className={({ isActive }) =>
-                    isActive ? " text-violet-600 dark:text-violet-400" : ""
+                    isActive ? " text-blue-700 dark:text-violet-400" : ""
                   }
                 >
                   Add Service
                 </NavLink>
               </li>
-              <li className="hover:text-violet-600">
+              <li className="hover:text-blue-700">
                 <NavLink
                   to="/my-reviews"
                   className={({ isActive }) =>
-                    isActive ? " text-violet-600 dark:text-violet-400" : ""
+                    isActive ? " text-blue-700 dark:text-violet-400" : ""
                   }
                 >
                   My Reviews
@@ -117,11 +119,11 @@ const Header = () => {
             </>
           ) : (
             <>
-              <li className="hover:text-violet-600">
+              <li className="hover:text-blue-700">
                 <NavLink
                   to="/login"
                   className={({ isActive }) =>
-                    isActive ? " text-violet-600 dark:text-violet-400" : ""
+                    isActive ? " text-blue-700 dark:text-violet-400" : ""
                   }
                 >
                   Login
@@ -154,27 +156,41 @@ const Header = () => {
         </div>
       </nav>
 
+      {/* Mobile Nav */}
       <nav
         className={`${
           menu ? "translate-x-48" : "translate-x-full"
-        } no-scrollbar fixed top-0 right-0 bottom-0 z-40 w-full overflow-y-auto bg-violet-400 transition-transform duration-200 ease-in-out dark:bg-gray-900 dark:text-gray-100 md:hidden `}
+        } no-scrollbar fixed top-0 right-0 bottom-0 z-40 w-full overflow-y-auto bg-blue-400 transition-transform duration-200 ease-in-out dark:bg-gray-900 dark:text-gray-100 md:hidden `}
       >
         <ul className="ml-10 mt-32 mb-10 flex flex-col gap-7 ">
           <li onClick={() => setMenu(false)}>
             <Link to="/home">Home</Link>
           </li>
           <li onClick={() => setMenu(false)}>
-            <Link to="/courses">Courses</Link>
-          </li>
-          <li onClick={() => setMenu(false)}>
-            <Link to="/faq">FAQ</Link>
+            <Link to="/services">Services</Link>
           </li>
           <li onClick={() => setMenu(false)}>
             <Link to="/blog">Blog</Link>
           </li>
-          <li onClick={() => setMenu(false)}>
-            <Link to="/login">Login</Link>
-          </li>
+          {authContext?.user && authContext.user.uid ? (
+            <>
+              <li onClick={() => setMenu(false)}>
+                <Link to="/add-service">Add Service</Link>
+              </li>
+              <li onClick={() => setMenu(false)}>
+                <Link to="/my-reviews">My Reviews</Link>
+              </li>
+            </>
+          ) : (
+            <>
+              <li onClick={() => setMenu(false)}>
+                <Link to="/login">Login</Link>
+              </li>
+              <li onClick={() => setMenu(false)}>
+                <Link to="/register">Register</Link>
+              </li>
+            </>
+          )}
         </ul>
       </nav>
     </header>

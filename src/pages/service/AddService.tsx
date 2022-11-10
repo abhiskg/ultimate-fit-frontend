@@ -15,7 +15,7 @@ const AddService = () => {
     formState: { errors },
   } = useForm<ServiceInputTypes>();
 
-  const { mutate } = useAddServiceData();
+  const { mutate, isLoading } = useAddServiceData();
 
   const handleAddProduct: SubmitHandler<ServiceInputTypes> = (inputData) => {
     mutate(inputData);
@@ -23,10 +23,10 @@ const AddService = () => {
 
   return (
     <div className="custom-width mx-auto">
-      <h1>Add Service</h1>
+      <h1 className="header-style">Add a new service</h1>
       <form
         onSubmit={handleSubmit(handleAddProduct)}
-        className="mx-auto max-w-md space-y-2"
+        className="mx-auto mb-10 max-w-md space-y-2"
       >
         <div>
           <label htmlFor="name">Service Name</label>
@@ -69,7 +69,7 @@ const AddService = () => {
             loading && "cursor-not-allowed"
           }`}
         >
-          {loading ? <SpinLoader /> : "login"}
+          {isLoading ? <SpinLoader /> : "Add Service"}
         </button>
       </form>
     </div>

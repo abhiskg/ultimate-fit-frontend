@@ -10,6 +10,7 @@ import { ServiceDataTypes } from "../../types/ServiceTypes";
 
 const ServiceDetail = () => {
   useDocTitle("ServiceDetails");
+
   const { id } = useParams();
 
   const { data, isLoading } = useServiceData(id as string);

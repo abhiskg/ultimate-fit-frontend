@@ -8,25 +8,30 @@ const ServiceCard = ({ service }: { service: ServiceDataTypes }) => {
     <div className=" bg-gray-100 text-gray-900">
       <div className=" grid grid-cols-12 rounded bg-gray-50">
         <PhotoProvider>
-          <PhotoView src="https://source.unsplash.com/random/640x480">
-            <div className=" col-span-full cursor-pointer bg-gray-700 lg:col-span-4">
+          <PhotoView src={service.image}>
+            <div className=" col-span-full cursor-pointer bg-gray-700 lg:col-span-5 xl:col-span-4">
               <img
-                src="https://source.unsplash.com/random/640x480"
-                className="h-80"
-                alt=""
+                src={service.image}
+                className="h-64 w-full"
+                alt={service.name}
               />
             </div>
           </PhotoView>
         </PhotoProvider>
-        <div className="col-span-full flex flex-col p-6 lg:col-span-8 lg:p-10">
+        <div className="col-span-full flex flex-col p-6 lg:col-span-7 lg:p-10 xl:col-span-8">
           <h1 className="text-3xl font-semibold">{service.name}</h1>
-          <p className="flex-1 pt-2">{service.description}</p>
+          <p className="flex-1 pt-2">
+            {service.description.length > 100
+              ? service.description.slice(0, 100) + "..."
+              : service.description}
+          </p>
+          <div className="pt-2 font-medium">Price: {service.price}$</div>
           <Link
             rel="noopener noreferrer"
-            to={`../service/${service._id}`}
-            className="inline-flex items-center space-x-2 pt-2 pb-6 text-sm text-violet-600"
+            to={`${service._id}`}
+            className="inline-flex items-center space-x-2 pt-2 pb-2 text-sm text-violet-600"
           >
-            <span>Read more</span>
+            <span>View Details</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
@@ -40,10 +45,6 @@ const ServiceCard = ({ service }: { service: ServiceDataTypes }) => {
               ></path>
             </svg>
           </Link>
-          <div className="flex items-center justify-between pt-2">
-            <div className="font-medium">Price: {service.price}$</div>
-            <span className="text-xs">3 min read</span>
-          </div>
         </div>
       </div>
     </div>
