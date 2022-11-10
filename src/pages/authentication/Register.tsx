@@ -10,6 +10,7 @@ import GoogleLogin from "../../components/login/GoogleLogin";
 
 import SpinLoader from "../../components/loaders/SpinLoader";
 import useDocTitle from "../../hooks/useDocTitle";
+import axios from "axios";
 
 const RegisterSchema = z.object({
   name: z.string().min(1, { message: "Please Enter your name" }),
@@ -43,7 +44,13 @@ const Register = () => {
       ?.createNewUser(email, password)
       .then(({ user }) => {
         if (user) {
-          handleUpdateUserInfo(name, profilePic, user);
+          axios
+            .post("http://localhost:5000/api/jwt", { email: user.email })
+            .then(({ data }) => {
+              localStorage.setItem("service-token", data.token);
+
+              handleUpdateUserInfo(name, profilePic, user);
+            });
         }
       })
       .catch((err: any) => {
@@ -63,11 +70,16 @@ const Register = () => {
     profilePic: string,
     user: User
   ) => {
-    authContext?.updateUser(name, profilePic, user).then(() => {
-      toast.success("Congratulation! Registration Successful");
-      setLoading(false);
-      reset();
-    });
+    authContext
+      ?.updateUser(name, profilePic, user)
+      .then(() => {
+        toast.success("Congratulation! Registration Successful");
+        setLoading(false);
+        reset();
+      })
+      .finally(() => {
+        authContext.setLoading(false);
+      });
   };
 
   return (
