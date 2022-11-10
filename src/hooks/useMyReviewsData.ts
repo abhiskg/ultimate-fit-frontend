@@ -8,7 +8,11 @@ interface UpdateDataType {
 }
 
 const fetchReviewsByUserEmail = (userEmail: string) => {
-  return axios.get(`http://localhost:5000/api/reviews?userEmail=${userEmail}`);
+  return axios.get(`http://localhost:5000/api/reviews?userEmail=${userEmail}`, {
+    headers: {
+      authorization: `Bearer ${localStorage.getItem("service-token")}`,
+    },
+  });
 };
 
 const deleteReviewData = (id: string) => {

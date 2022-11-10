@@ -10,10 +10,13 @@ const MyReviews = () => {
   useDocTitle("MyReviews");
   const authContext = useContext(AuthContext);
   const userEmail = authContext?.user?.email as string;
-  const { data, isLoading } = useMyReviewsData(userEmail);
+  const { data, isLoading, isError, error } = useMyReviewsData(userEmail);
 
   if (isLoading) {
     return <div>Loading</div>;
+  }
+  if (isError) {
+    return authContext?.logOut();
   }
   const reviews = data?.data.data as ReviewDataTypes[];
 

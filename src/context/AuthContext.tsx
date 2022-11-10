@@ -63,6 +63,7 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
 
   const logOut = () => {
     setLoading(true);
+    localStorage.removeItem("service-token");
     return signOut(auth);
   };
 

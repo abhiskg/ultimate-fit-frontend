@@ -15,10 +15,11 @@ const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
     );
   }
 
-  if (!authContext?.user) {
-    <Navigate to="/login" state={{ from: location }} replace></Navigate>;
+  if (authContext?.user && authContext.user.uid) {
+    return <>{children}</>;
   }
-  return <>{children}</>;
+
+  return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
 };
 
 export default PrivateRoute;

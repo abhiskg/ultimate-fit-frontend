@@ -1,8 +1,6 @@
-import ServiceCard from "../../components/cards/ServiceCard";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import { ServiceDataTypes } from "../../types/ServiceTypes";
 import { useState } from "react";
+import ServiceCard from "../../components/cards/ServiceCard";
+import { ServiceDataTypes } from "../../types/ServiceTypes";
 import { useServicesData } from "../../hooks/useServicesData";
 import useDocTitle from "../../hooks/useDocTitle";
 
@@ -10,20 +8,6 @@ const Services = () => {
   useDocTitle("Services");
   const [page, setPage] = useState(0);
   const [limit, setLimit] = useState(6);
-
-  // const fetchAllServices = async () => {
-  //   return await axios.get(
-  //     `http://localhost:5000/api/services?page=${page}&limit=${limit}`
-  //   );
-  // };
-
-  // const { data, isLoading, isError, error } = useQuery(
-  //   ["services", page],
-  //   fetchAllServices,
-  //   {
-  //     keepPreviousData: true,
-  //   }
-  // );
 
   const { data, isLoading, isError, error } = useServicesData(page, limit);
 

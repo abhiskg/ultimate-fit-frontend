@@ -1,5 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import { useParams } from "react-router-dom";
 import ReviewCard from "../../components/cards/ReviewCard";
 import ReviewInput from "../../components/inputs/ReviewInput";

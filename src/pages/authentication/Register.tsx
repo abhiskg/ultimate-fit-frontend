@@ -5,7 +5,7 @@ import { z } from "zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AuthContext } from "../../context/AuthContext";
-import { sendEmailVerification, User } from "firebase/auth";
+import { User } from "firebase/auth";
 import GoogleLogin from "../../components/login/GoogleLogin";
 
 import SpinLoader from "../../components/loaders/SpinLoader";
@@ -23,7 +23,7 @@ const RegisterSchema = z.object({
 type RegisterSchemaType = z.infer<typeof RegisterSchema>;
 
 const Register = () => {
-  useDocTitle('Register')
+  useDocTitle("Register");
   const authContext = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
 
@@ -64,11 +64,9 @@ const Register = () => {
     user: User
   ) => {
     authContext?.updateUser(name, profilePic, user).then(() => {
-      sendEmailVerification(user).then(() => {
-        toast.success("Congratulation! Check your email & verify to login!");
-        setLoading(false);
-        reset();
-      });
+      toast.success("Congratulation! Registration Successful");
+      setLoading(false);
+      reset();
     });
   };
 

@@ -5,10 +5,10 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { AuthContext } from "../../context/AuthContext";
-import { sendEmailVerification, User } from "firebase/auth";
 import GoogleLogin from "../../components/login/GoogleLogin";
 import SpinLoader from "../../components/loaders/SpinLoader";
 import useDocTitle from "../../hooks/useDocTitle";
+import axios from "axios";
 
 const LoginSchema = z.object({
   email: z
@@ -25,8 +25,6 @@ type LoginSchemaType = z.infer<typeof LoginSchema>;
 const Login = () => {
   useDocTitle("Login");
   const [loading, setLoading] = useState(false);
-  const [emailVerified, setEmailVerified] = useState(true);
-  const [unVerifiedUser, setUnVerifiedUser] = useState<null | User>(null);
   const authContext = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -45,20 +43,21 @@ const Login = () => {
 
   const onSubmit: SubmitHandler<LoginSchemaType> = (data) => {
     const { email, password } = data;
-
+    setLoading(true);
     authContext
       ?.signIn(email, password)
       .then(({ user }) => {
-        if (!user.emailVerified) {
-          setLoading(false);
-          toast.error("Please verify your email to login");
-          setUnVerifiedUser(user);
-          setEmailVerified(false);
-        } else {
-          toast.success("Login successful");
-          navigate(from, { replace: true });
-        }
-        reset();
+        // Get jwt token
+        axios
+          .post("http://localhost:5000/api/jwt", { email: user.email })
+          .then(({ data }) => {
+            localStorage.setItem("service-token", data.token);
+
+            setLoading(false);
+            reset();
+            toast.success("Login successful");
+            navigate(from, { replace: true });
+          });
       })
       .catch((err: any) => {
         if (err.message == "Firebase: Error (auth/user-not-found).") {
@@ -71,19 +70,10 @@ const Login = () => {
           setLoading(false);
           toast.error("Something went wrong, try again later");
         }
-      })
-      .finally(() => {
-        // authContext.setLoading(false);
       });
-  };
-
-  const handleResendVerificationEmail = () => {
-    if (unVerifiedUser) {
-      sendEmailVerification(unVerifiedUser).then(() => {
-        toast.success("Email Resend! Verify Now");
-        setEmailVerified(true);
-      });
-    }
+    // .finally(() => {
+    //   // authContext.setLoading(false);
+    // });
   };
 
   return (
@@ -133,17 +123,6 @@ const Login = () => {
               />
               {errors.password?.message && (
                 <p className="error-message">{errors.password?.message}</p>
-              )}
-              {!emailVerified && (
-                <p className="text-right text-xs">
-                  did't get verification email?{" "}
-                  <span
-                    className="cursor-pointer text-violet-400 hover:underline"
-                    onClick={handleResendVerificationEmail}
-                  >
-                    resend
-                  </span>
-                </p>
               )}
             </div>
           </div>

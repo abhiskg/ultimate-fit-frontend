@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import SpinLoader from "../../components/loaders/SpinLoader";
@@ -20,15 +19,6 @@ const AddService = () => {
 
   const handleAddProduct: SubmitHandler<ServiceInputTypes> = (inputData) => {
     mutate(inputData);
-    // try {
-    //   const data = await axios.post(
-    //     "http://localhost:5000/api/services",
-    //     inputData
-    //   );
-    //   console.log(data);
-    // } catch (err) {
-    //   console.log((err as Error).message);
-    // }
   };
 
   return (
