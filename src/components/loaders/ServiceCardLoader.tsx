@@ -1,12 +1,16 @@
 const ServiceCardLoader = () => {
   return (
-    <div className="h-full animate-pulse overflow-hidden rounded-lg border-2 border-gray-200 border-opacity-60">
-      <div className="w-full bg-gray-300 md:h-36 lg:h-48"></div>
+    <div className="animate-pulse">
+      <div className=" grid grid-cols-12 rounded bg-gray-50">
+        <div className=" col-span-full cursor-pointer bg-gray-700 lg:col-span-5 xl:col-span-4">
+          <div className="h-64 w-full bg-gray-300"></div>
+        </div>
 
-      <div className="bg-gray-50 p-6">
-        <div className="title-font mb-2 h-4 rounded bg-gray-300"></div>
-        <div className="mb-3 h-12 rounded bg-gray-300"></div>
-        <div className="mb-3  h-4 w-1/4 rounded bg-gray-300"></div>
+        <div className="col-span-full flex flex-col p-6 lg:col-span-7 lg:p-10 xl:col-span-8">
+          <div className="h-4 rounded bg-gray-300"></div>
+          <div className="mt-4 h-20 rounded bg-gray-300"></div>
+          <div className="mt-4 h-4 w-1/4 rounded bg-gray-300"></div>
+        </div>
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import { ServiceDataTypes } from "../../types/ServiceTypes";
 import { useServicesData } from "../../hooks/useServicesData";
 import useDocTitle from "../../hooks/useDocTitle";
 import PingLoader from "../../components/loaders/PingLoader";
+import ServiceCardLoader from "../../components/loaders/ServiceCardLoader";
 
 const Services = () => {
   useDocTitle("Services");
@@ -16,9 +17,9 @@ const Services = () => {
 
   const allServices = data?.data.data as ServiceDataTypes[];
 
-  if (isLoading) {
-    return <PingLoader />;
-  }
+  // if (isLoading) {
+  //   return <PingLoader />;
+  // }
 
   if (isError && error instanceof Error) {
     return <div>{error.message}</div>;
@@ -27,27 +28,38 @@ const Services = () => {
   return (
     <div className="custom-width mx-auto">
       <h1 className="header-style">Services</h1>
+      {isLoading && (
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-1">
+          <ServiceCardLoader />
+          <ServiceCardLoader />
+          <ServiceCardLoader />
+          <ServiceCardLoader />
+        </div>
+      )}
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-1">
-        {allServices.map((service) => (
-          <div className="mb-5" key={service._id}>
-            <ServiceCard service={service} />
-          </div>
-        ))}
+        {allServices &&
+          allServices.map((service) => (
+            <div className="mb-5" key={service._id}>
+              <ServiceCard service={service} />
+            </div>
+          ))}
       </div>
       {/* Pagination */}
-      <div className="mb-10 flex justify-end">
-        {[...Array(count).keys()].map((num) => (
-          <span
-            className={`mx-1 cursor-pointer  py-2 px-3 font-medium text-white ${
-              num === page ? "bg-blue-500" : "bg-blue-300"
-            }`}
-            key={num}
-            onClick={() => setPage(num)}
-          >
-            {num + 1}
-          </span>
-        ))}
-      </div>
+      {allServices && (
+        <div className="mb-10 flex justify-end">
+          {[...Array(count).keys()].map((num) => (
+            <span
+              className={`mx-1 cursor-pointer  py-2 px-3 font-medium text-white ${
+                num === page ? "bg-blue-500" : "bg-blue-300"
+              }`}
+              key={num}
+              onClick={() => setPage(num)}
+            >
+              {num + 1}
+            </span>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
