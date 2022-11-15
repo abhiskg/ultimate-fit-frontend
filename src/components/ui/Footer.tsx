@@ -72,7 +72,7 @@ const Footer = () => {
       <div className="bg-gray-100">
         <div className="custom-width mx-auto flex flex-col flex-wrap py-4  sm:flex-row">
           <p className="text-center text-sm text-gray-500 sm:text-left">
-            © 2022 Tailblocks —
+            © 2022 Ultimate Fit —
             <a
               href="https://www.facebook.com/Abhiskg20"
               rel="noopener noreferrer"

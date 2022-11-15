@@ -26,12 +26,11 @@ const AddService = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isValidating },
-    watch,
+    formState: { errors },
   } = useForm<ServiceInputTypes>({ resolver: zodResolver(ServiceSchema) });
 
   const { mutate, isLoading } = useAddServiceData();
-  console.log(isValidating);
+
   const handleAddProduct: SubmitHandler<ServiceInputTypes> = (inputData) => {
     try {
       mutate(inputData);
