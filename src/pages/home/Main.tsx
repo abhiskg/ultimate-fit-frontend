@@ -19,14 +19,11 @@ const Main = () => {
       <div>
         <Hero />
       </div>
-      {isLoading && (
-        <div className="grid w-full gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          <ServiceMiniCardLoader />
-          <ServiceMiniCardLoader />
-          <ServiceMiniCardLoader />
-        </div>
-      )}
       <div className="grid w-full gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {isLoading &&
+          [...Array(3).keys()].map((num) => (
+            <ServiceMiniCardLoader key={num} />
+          ))}
         {services &&
           services.map((service) => (
             <ServiceMiniCard key={service._id} service={service} />

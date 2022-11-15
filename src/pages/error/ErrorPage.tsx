@@ -97,9 +97,9 @@ const ErrorPage = () => {
                 d="M869.442 380.511L861.832 308.114C865.021 300.271 873.362 295.641 886.857 294.222C900.351 292.804 909.474 295.599 914.223 302.607L921.832 375.005L869.442 380.511ZM1026.61 363.992L974.223 369.499L966.614 297.101C969.802 289.258 978.144 284.628 991.638 283.209C1005.13 281.791 1014.25 284.586 1019 291.594L1026.61 363.992Z"
                 fill="white"
                 stroke="#263E4B"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               ></path>
               <path
                 fill-rule="evenodd"

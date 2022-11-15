@@ -3,7 +3,6 @@ import ServiceCard from "../../components/cards/ServiceCard";
 import { ServiceDataTypes } from "../../types/ServiceTypes";
 import { useServicesData } from "../../hooks/useServicesData";
 import useDocTitle from "../../hooks/useDocTitle";
-import PingLoader from "../../components/loaders/PingLoader";
 import ServiceCardLoader from "../../components/loaders/ServiceCardLoader";
 
 const Services = () => {
@@ -17,10 +16,6 @@ const Services = () => {
 
   const allServices = data?.data.data as ServiceDataTypes[];
 
-  // if (isLoading) {
-  //   return <PingLoader />;
-  // }
-
   if (isError && error instanceof Error) {
     return <div>{error.message}</div>;
   }
@@ -28,15 +23,10 @@ const Services = () => {
   return (
     <div className="custom-width mx-auto">
       <h1 className="header-style">Services</h1>
-      {isLoading && (
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-1">
-          <ServiceCardLoader />
-          <ServiceCardLoader />
-          <ServiceCardLoader />
-          <ServiceCardLoader />
-        </div>
-      )}
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-1">
+        {isLoading &&
+          [...Array(4).keys()].map((num) => <ServiceCardLoader key={num} />)}
+
         {allServices &&
           allServices.map((service) => (
             <div className="mb-5" key={service._id}>
