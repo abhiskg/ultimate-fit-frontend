@@ -5,7 +5,7 @@ import { useAddReviewData } from "../../hooks/useReviewsData";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ReviewInputTypes } from "../../types/ReviewTypes";
 
-const ReviewInput = ({ serviceName }: { serviceName: string }) => {
+const ReviewInput = ({ serviceName }: { serviceName: string | undefined }) => {
   const { id } = useParams();
   const { mutate } = useAddReviewData(id as string);
 
@@ -19,6 +19,9 @@ const ReviewInput = ({ serviceName }: { serviceName: string }) => {
   } = useForm<ReviewInputTypes>();
 
   const handleAddReview: SubmitHandler<ReviewInputTypes> = (data) => {
+    if (!serviceName) {
+      return;
+    }
     const review = data.review;
     const userName = authContext?.user?.displayName as string;
     const userImage = authContext?.user?.photoURL as string;
