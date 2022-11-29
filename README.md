@@ -11,4 +11,4 @@
 - My reviews and Add Service route are kept under private route, so only logged-in users can access them.
 - MVC model is implemented in the backend with Mongoose Schema for better code structure.
 
-**Technologies Used:** React, React-router, React Query, Tailwind CSS, Firebase, React-hook-form, Zod, React-hot-toast, React-phto-view, Axios, MongoDB
+**Technologies Used:** React, React-router, React Query, Tailwind CSS, Firebase, React-hook-form, Zod, React-hot-toast, React-photo-view, Axios, MongoDB
