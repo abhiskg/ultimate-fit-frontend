@@ -18,7 +18,9 @@ const GoogleLogin = () => {
       ?.signInWithProvider(provider)
       .then(({ user }) => {
         axios
-          .post("https://ultimate-fit-backend.vercel.app/api/jwt", { email: user.email })
+          .post("https://cyan-trout-kit.cyclic.app/api/jwt", {
+            email: user.email,
+          })
           .then(({ data }) => {
             localStorage.setItem("service-token", data.token);
 

@@ -49,7 +49,7 @@ const Login = () => {
       .then(({ user }) => {
         // Get jwt token
         axios
-          .post("https://ultimate-fit-backend.vercel.app/api/jwt", {
+          .post("https://cyan-trout-kit.cyclic.app/api/jwt", {
             email: user.email,
           })
           .then(({ data }) => {

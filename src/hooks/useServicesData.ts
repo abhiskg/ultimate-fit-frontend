@@ -5,13 +5,13 @@ import { ServiceInputTypes } from "../types/ServiceTypes";
 
 const fetchAllServices = async (page: number, limit: number) => {
   return await axios.get(
-    `https://ultimate-fit-backend.vercel.app/api/services?page=${page}&limit=${limit}`
+    `https://cyan-trout-kit.cyclic.app/api/services?page=${page}&limit=${limit}`
   );
 };
 
 const addNewService = async (inputData: ServiceInputTypes) => {
   return await axios.post(
-    "https://ultimate-fit-backend.vercel.app/api/services",
+    "https://cyan-trout-kit.cyclic.app/api/services",
     inputData
   );
 };

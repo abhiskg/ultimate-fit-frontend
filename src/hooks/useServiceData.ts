@@ -3,7 +3,7 @@ import axios from "axios";
 
 const fetchService = async (id: string) => {
   return await axios.get(
-    `https://ultimate-fit-backend.vercel.app/api/services/${id}`
+    `https://cyan-trout-kit.cyclic.app/api/services/${id}`
   );
 };
 
